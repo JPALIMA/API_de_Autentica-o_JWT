@@ -1,16 +1,10 @@
-# app/controllers/taks_controller.rb
-
-require_relative ' ../authenticator' #Certifique-se de ajustar o caminho para o authenticator.rb
-
 class TasksController < ApplicationController
-     include Authenticator #Inclua o módulo Authenticator
+     #...
 
-     # ...
-
-     #autenticação do usuário e geração de token JWT
-     def authenticate_user
+     #Autenticação do usuário e geração de token JWT
+     def authenticate
           username = params[:username]
-          password = params[:password]
+          passaword = params[:password]
 
           token = authenticate(username, password)
 
@@ -21,8 +15,8 @@ class TasksController < ApplicationController
           end
      end
 
-
      #...
 end
+
 
 
