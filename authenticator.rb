@@ -1,21 +1,20 @@
-# Gem necessária: 'jwt' para gerar tokens JWT
 require 'jwt'
 
-# Simples banco de dados de usuários (substitua por um banco de dados real)
+#Simples banco de dados de usuários (substitua por banco de dados real )
 USERS = [
-  { username: 'usuario1', password: 'senha1' },
-  { username: 'usuario2', password: 'senha2' }
+  { username: 'usuario1', password: 'senha1'},
+  { username: 'usuario2', password: 'senha2'}
 ]
 
-# Chave secreta para assinar os tokens JWT
+#Chave secreta para assinar os tokens JWT
 SECRET_KEY = 'sua_chave_secreta'
 
-# Método para autenticar um usuário e gerar um token JWT
+#Método para autenticar um usuário e gerar um token JWT
 def authenticate(username, password)
   user = USERS.find { |u| u[:username] == username && u[:password] == password }
   return nil unless user
 
-  payload = { username: username }
-  token = JWT.encode(payload, SECRET_KEY, 'HS256')
-  token
+  payload = { username: username}
+  token = JWT.encore(payload, SECRET_KEY, 'HS256')
+  token 
 end
